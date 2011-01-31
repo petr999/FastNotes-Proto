@@ -5,10 +5,12 @@ use warnings;
 
 use Test::More tests => 5;
 use Test::Mojo;
+use FindBin;
+use lib "$FindBin::Bin/../lib";
 
 use_ok('FastNotes');
 
 # Test
 my $t = Test::Mojo->new(app => 'FastNotes');
 $t->get_ok('/')->status_is(200)->content_type_is('text/html')
-  ->content_like(qr/Mojolicious Web Framework/i);
+  ->content_like(qr/<title>FastNotes<\/title>/i);

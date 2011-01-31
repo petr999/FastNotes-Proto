@@ -10,6 +10,8 @@ sub index {
 
     my $notes = FastNotes::Model::Note->select( {
         user_id => $self->session('user_id')
+    },{
+        -desc => 'date',
     } )->hashes;
 
     $self->render_json($notes);

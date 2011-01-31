@@ -3,6 +3,7 @@ package FastNotes;
 use strict;
 use warnings;
 use base 'Mojolicious';
+use FindBin;
 
 
 # This method will run once at server start
@@ -11,9 +12,12 @@ sub startup {
 
     $self->secret('SomethingVerySecret');
     $self->mode('development');
-    $self->sessions->default_expiration(3600*24*7);
+    $self->session->default_expiration(3600*24*7);
 
-    my $config = $self->plugin('json_config');
+    my $config = $self->plugin('json_config', {
+        file => $FindBin::Bin . '/../' . lc( __PACKAGE__  ).'.json' 
+    } );
+
 
     my $r = $self->routes;
     $r->namespace('FastNotes::Controller');

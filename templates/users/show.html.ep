@@ -18,4 +18,4 @@
 
 
 <a class='menubutton' id='notepad_button'>Show Notes</a> <br /><br />
-<a class='menubutton' id='notepad_button' href='<%= url_for "auths_delete" %>'>Logout</a>
+<a class='menubutton' href='<%= url_for "auths_delete" %>'>Logout</a>
